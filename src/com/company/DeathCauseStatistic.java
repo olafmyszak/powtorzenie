@@ -1,8 +1,6 @@
 package com.company;
 
-import javax.print.DocFlavor;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
@@ -69,28 +67,6 @@ public class DeathCauseStatistic {
     }
 
     public AgeBracketDeaths ageBracketDeaths(int age){
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader("zgony.csv"));
-            reader.readLine();
-
-            String line = reader.readLine();
-
-            StringTokenizer tokenizer = new StringTokenizer(line, ",");
-            tokenizer.nextToken();
-            tokenizer.nextToken();
-
-            int [] deathByAge = new int[20];
-
-            int counter = 0;
-            while(tokenizer.hasMoreTokens()){
-                deathByAge[counter] = Integer.parseInt(tokenizer.nextToken());
-                ++counter;
-            }
-
-            return new AgeBracketDeaths(age/5 * 5, age/5 * 5 +4, deathByAge[age/5]);
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+       return new AgeBracketDeaths(age/5*5, age/5*5+4, nr_of_deaths[age/5]);
     }
 }
