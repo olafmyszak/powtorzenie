@@ -10,5 +10,11 @@ public class Main {
         System.out.println(ageBracketDeaths.getYoung());
         System.out.println(ageBracketDeaths.getOld());
         System.out.println(ageBracketDeaths.getDeathCount());
+
+        DeathCauseStatisticList list = new DeathCauseStatisticList();
+        list.repopulate("zgony.csv");
+        System.out.println(list.get(5));
+
+        list.mostDeadlyDiseases(30000, 30000);
     }
 }

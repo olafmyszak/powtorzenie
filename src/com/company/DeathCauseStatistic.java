@@ -3,6 +3,7 @@ package com.company;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class DeathCauseStatistic {
@@ -47,6 +48,15 @@ public class DeathCauseStatistic {
         public final int old;
         public final int deathCount;
 
+        @Override
+        public String toString() {
+            return "AgeBracketDeaths{" +
+                    "young=" + young +
+                    ", old=" + old +
+                    ", deathCount=" + deathCount +
+                    '}';
+        }
+
         public AgeBracketDeaths(int young, int old, int deathCount) {
             this.young = young;
             this.old = old;
@@ -68,5 +78,13 @@ public class DeathCauseStatistic {
 
     public AgeBracketDeaths ageBracketDeaths(int age){
        return new AgeBracketDeaths(age/5*5, age/5*5+4, nr_of_deaths[age/5]);
+    }
+
+    @Override
+    public String toString() {
+        return "DeathCauseStatistic{" +
+                "ICD10_code='" + ICD10_code + '\'' +
+                ", nr_of_deaths=" + Arrays.toString(nr_of_deaths) +
+                '}';
     }
 }
